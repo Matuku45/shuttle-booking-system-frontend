@@ -1,8 +1,16 @@
-import styling './App.css';
+import './App.css';
+import React from 'react';
+import Header from './components/Header';
+import Footer from './components/Footer';
+import Home from './pages/Home';
 
 function App() {
   return (
-<p class="text-blue-600 dark:text-sky-400">The quick brown fox...</p>
+    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-500 to-purple-600 text-white">
+      <Header />
+      <Home />
+      <Footer />
+    </div>
   );
 }
 
