@@ -1,7 +1,7 @@
 import React from 'react';
 import logo from './imgs/logo.jpg';
 
-const Header = ({ onAboutClick, onSignUpClick }) => {
+const Header = ({ onAboutClick, onSignUpClick, onSignInClick }) => {
   const headerStyle = {
     width: '100%',
     backgroundColor: '#1d4ed8',
@@ -70,7 +70,16 @@ const Header = ({ onAboutClick, onSignUpClick }) => {
           >
             Create Account
           </a>
-          <a href="/register" style={buttonStyle}>Register</a>
+          <a
+            href="#"
+            style={buttonStyle}
+            onClick={e => {
+              e.preventDefault();
+              if (onSignInClick) onSignInClick();
+            }}
+          >
+            Sign In
+          </a>
         </nav>
       </div>
     </header>

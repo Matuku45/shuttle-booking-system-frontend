@@ -75,6 +75,15 @@ const SignUp = () => {
           width: "100%",
         }}
       >
+        <div className="text-center">
+          <img
+            src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/lotus.webp"
+            style={{ width: "185px" }}
+            alt="logo"
+          />
+          <h4 className="mt-1 mb-5 pb-1">We are The Lotus Team</h4>
+        </div>
+
         <h2
           style={{
             textTransform: "uppercase",
@@ -172,24 +181,51 @@ const SignUp = () => {
               id="agree"
               style={{ marginRight: "8px" }}
             />
-            <label htmlFor="agree" style={{ fontSize: "0.98rem" }}>
+            <label
+              htmlFor="agree"
+              style={{ fontSize: "0.98rem" }}
+            >
               I agree all statements in{" "}
-              <a href="#!" style={{ color: accentColor, textDecoration: "underline" }}>
+              <a
+                href="#!"
+                style={{
+                  color: accentColor,
+                  textDecoration: "underline",
+                }}
+              >
                 Terms of service
               </a>
             </label>
           </div>
           {error && (
-            <div style={{ color: "#e63946", marginBottom: "12px", textAlign: "center" }}>
+            <div
+              style={{
+                color: "#e63946",
+                marginBottom: "12px",
+                textAlign: "center",
+              }}
+            >
               {error}
             </div>
           )}
           {success && (
-            <div style={{ color: "#38b000", marginBottom: "12px", textAlign: "center" }}>
+            <div
+              style={{
+                color: "#38b000",
+                marginBottom: "12px",
+                textAlign: "center",
+              }}
+            >
               {success}
             </div>
           )}
-          <div style={{ display: "flex", justifyContent: "center", marginBottom: "8px" }}>
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "center",
+              marginBottom: "8px",
+            }}
+          >
             <button
               type="submit"
               style={{
@@ -208,9 +244,23 @@ const SignUp = () => {
               Register
             </button>
           </div>
-          <p style={{ textAlign: "center", color: "#6c757d", marginTop: "24px", fontSize: "1rem" }}>
+          <p
+            style={{
+              textAlign: "center",
+              color: "#6c757d",
+              marginTop: "24px",
+              fontSize: "1rem",
+            }}
+          >
             Have already an account?{" "}
-            <a href="/login" style={{ color: accentColor, fontWeight: "bold", textDecoration: "underline" }}>
+            <a
+              href="/login"
+              style={{
+                color: accentColor,
+                fontWeight: "bold",
+                textDecoration: "underline",
+              }}
+            >
               Login here
             </a>
           </p>
