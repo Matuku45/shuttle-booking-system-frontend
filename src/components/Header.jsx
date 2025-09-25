@@ -1,7 +1,7 @@
 import React from 'react';
-import logo from './imgs/logo.jpg'; // Use your actual logo path
+import logo from './imgs/logo.jpg';
 
-const Header = () => {
+const Header = ({ onAboutClick }) => {
   const headerStyle = {
     width: '100%',
     backgroundColor: '#1d4ed8',
@@ -57,7 +57,7 @@ const Header = () => {
         </div>
         <nav style={navStyle}>
           <a href="/" style={navLinkStyle}>Home</a>
-          <a href="/about" style={navLinkStyle}>About</a>
+          <a href="#" style={navLinkStyle} onClick={e => { e.preventDefault(); onAboutClick(); }}>About</a>
           <a href="/contact" style={navLinkStyle}>Contact</a>
           <a href="/support" style={navLinkStyle}>Support</a>
           <a href="/signup" style={buttonStyle}>Create Account</a>

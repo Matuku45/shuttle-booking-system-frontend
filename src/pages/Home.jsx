@@ -4,10 +4,8 @@ import img1 from '../components/imgs/picture1.webp';
 import img2 from '../components/imgs/picture2.webp';
 import img3 from '../components/imgs/picture3.webp';
 
-// Carousel images (use imported image variables)
 const images = [img1, img2, img3];
 
-// ===== Home Component =====
 const Home = () => {
   const [current, setCurrent] = useState(0);
   const [error, setError] = useState(false);
@@ -21,19 +19,9 @@ const Home = () => {
     return () => clearTimeout(timer);
   }, [current, error]);
 
-  const nextImage = () => {
-    setError(false);
-    setCurrent((prev) => (prev + 1) % images.length);
-  };
-
-  const prevImage = () => {
-    setError(false);
-    setCurrent((prev) => (prev - 1 + images.length) % images.length);
-  };
-
   const handleError = () => {
     setError(true);
-    nextImage();
+    setCurrent((prev) => (prev + 1) % images.length);
   };
 
   const container = {
@@ -64,29 +52,15 @@ const Home = () => {
     fontWeight: '500',
   };
 
-  const button = {
-    padding: '12px 28px',
-    fontSize: '1.1rem',
-    backgroundColor: '#457b9d',
-    color: 'white',
-    border: 'none',
-    borderRadius: '8px',
-    cursor: 'pointer',
-    boxShadow: '0 2px 8px rgba(69,123,157,0.15)',
-    margin: '0 12px',
-    fontWeight: 'bold',
-    letterSpacing: '0.5px',
-    transition: 'background 0.2s',
-  };
-
   const carousel = {
-    width: '420px',
-    height: '260px',
-    marginBottom: '2rem',
+    width: '100%',
+    maxWidth: '700px',
+    height: '340px',
+    marginBottom: '1.5rem',
     position: 'relative',
     overflow: 'hidden',
-    borderRadius: '18px',
-    boxShadow: '0 4px 18px rgba(69,123,157,0.18)',
+    borderRadius: '24px',
+    boxShadow: '0 8px 32px rgba(69,123,157,0.18)',
     background: '#fff',
     display: 'flex',
     alignItems: 'center',
@@ -97,29 +71,30 @@ const Home = () => {
     width: '100%',
     height: '100%',
     objectFit: 'cover',
-    borderRadius: '18px',
+    borderRadius: '24px',
     background: '#eee',
     transition: 'opacity 0.5s',
     boxShadow: '0 2px 12px rgba(69,123,157,0.12)',
     display: error ? 'none' : 'block',
   };
 
-  const navBtnStyle = {
-    position: 'absolute',
-    top: '50%',
-    transform: 'translateY(-50%)',
-    background: 'rgba(69,123,157,0.7)',
-    color: '#fff',
-    border: 'none',
-    borderRadius: '50%',
-    width: '38px',
-    height: '38px',
-    fontSize: '1.5rem',
-    cursor: 'pointer',
-    zIndex: 2,
-    boxShadow: '0 2px 8px rgba(69,123,157,0.15)',
-    transition: 'background 0.2s',
+  const indicatorContainer = {
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    gap: '10px',
+    marginTop: '16px',
   };
+
+  const indicatorDot = (active) => ({
+    width: '16px',
+    height: '16px',
+    borderRadius: '50%',
+    background: active ? '#457b9d' : '#bfc9d6',
+    border: active ? '2px solid #1d3557' : '2px solid #e0eafc',
+    transition: 'background 0.3s, border 0.3s',
+    boxShadow: active ? '0 2px 8px rgba(69,123,157,0.15)' : 'none',
+  });
 
   return (
     <div style={container}>
@@ -128,26 +103,12 @@ const Home = () => {
         Book your shuttle easily and manage your trips with convenience.
       </p>
       <div style={carousel}>
-        <button
-          style={{ ...navBtnStyle, left: '12px' }}
-          onClick={prevImage}
-          aria-label="Previous"
-        >
-          &#8592;
-        </button>
         <img
           src={images[current]}
           alt={`Shuttle ${current + 1}`}
           style={imgStyle}
           onError={handleError}
         />
-        <button
-          style={{ ...navBtnStyle, right: '12px' }}
-          onClick={nextImage}
-          aria-label="Next"
-        >
-          &#8594;
-        </button>
         {error && (
           <div style={{
             position: 'absolute',
@@ -159,15 +120,16 @@ const Home = () => {
             color: '#e63946',
             fontWeight: 'bold',
             fontSize: '1.1rem',
-            borderRadius: '18px'
+            borderRadius: '24px'
           }}>
             Image not found. Showing next image...
           </div>
         )}
       </div>
-      <div>
-        <button style={button} onClick={prevImage}>Previous</button>
-        <button style={button} onClick={nextImage}>Next</button>
+      <div style={indicatorContainer}>
+        {images.map((_, idx) => (
+          <div key={idx} style={indicatorDot(idx === current)} />
+        ))}
       </div>
       <a
         href="/signup"
@@ -179,6 +141,11 @@ const Home = () => {
           textDecoration: 'underline',
           fontSize: '1.2rem',
           letterSpacing: '0.5px',
+          background: '#f1faee',
+          padding: '12px 32px',
+          borderRadius: '10px',
+          boxShadow: '0 2px 8px rgba(69,123,157,0.10)',
+          transition: 'background 0.2s',
         }}
       >
         Register to book your flight
