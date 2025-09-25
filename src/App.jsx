@@ -6,6 +6,7 @@ import Home from './pages/Home';
 import About from './pages/About';
 import SignUp from './pages/SignUp';
 import Login from './pages/Login';
+import AppRoutes from './path/AppRoutes';
 
 function App() {
   const [showAbout, setShowAbout] = useState(false);
@@ -19,7 +20,7 @@ function App() {
         onSignUpClick={() => setShowSignUp(true)}
         onSignInClick={() => setShowLogin(true)}
       />
-      {!showSignUp && !showAbout && !showLogin && <Home />}
+      <AppRoutes />
       {showAbout && (
         <div
           style={{
